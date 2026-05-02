@@ -1,0 +1,90 @@
+{
+  "protocol": "REST (HTTP+JSON)",
+  "http_method": "GET",
+  "path": "/tasks/{task_id}/pushNotificationConfigs/{id}",
+  "tenant_path": "/{tenant}/tasks/{task_id}/pushNotificationConfigs/{id}",
+  "description": "Gets a push notification config for a task.",
+  "streaming": false,
+  "request": {
+    "type": "GetTaskPushNotificationConfigRequest",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "Represents a request for the `GetTaskPushNotificationConfig` method.",
+      "patternProperties": {
+        "^(task_id)$": {
+          "default": "",
+          "description": "The parent task resource ID.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "id": {
+          "default": "",
+          "description": "The resource ID of the configuration to retrieve.",
+          "type": "string"
+        },
+        "taskId": {
+          "default": "",
+          "description": "The parent task resource ID.",
+          "type": "string"
+        },
+        "tenant": {
+          "default": "",
+          "description": "Optional. Tenant ID, provided as a path parameter.",
+          "type": "string"
+        }
+      },
+      "title": "Get Task Push Notification Config Request",
+      "type": "object"
+    }
+  },
+  "response": {
+    "type": "TaskPushNotificationConfig",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "A container associating a push notification configuration with a specific task.",
+      "patternProperties": {
+        "^(task_id)$": {
+          "default": "",
+          "description": "The ID of the task this configuration is associated with.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "authentication": {
+          "$ref": "lf.a2a.v1.AuthenticationInfo.jsonschema.json",
+          "description": "Authentication information required to send the notification."
+        },
+        "id": {
+          "default": "",
+          "description": "The push notification configuration details.\n A unique identifier (e.g. UUID) for this push notification configuration.",
+          "type": "string"
+        },
+        "taskId": {
+          "default": "",
+          "description": "The ID of the task this configuration is associated with.",
+          "type": "string"
+        },
+        "tenant": {
+          "default": "",
+          "description": "Optional. Tenant ID.",
+          "type": "string"
+        },
+        "token": {
+          "default": "",
+          "description": "A token unique for this task or session.",
+          "type": "string"
+        },
+        "url": {
+          "default": "",
+          "description": "The URL where the notification should be sent.",
+          "type": "string"
+        }
+      },
+      "title": "Task Push Notification Config",
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "SubscribeToTask",
+  "description": "Subscribes to task updates for tasks not in a terminal state. Returns `UnsupportedOperationError` if the task is already in a terminal state (completed, failed, canceled, rejected).",
+  "request_type": "SubscribeToTaskRequest",
+  "response_type": "StreamResponse",
+  "client_streaming": false,
+  "server_streaming": true
+}

@@ -1,0 +1,46 @@
+{
+  "protocol": "REST (HTTP+JSON)",
+  "http_method": "DELETE",
+  "path": "/tasks/{task_id}/pushNotificationConfigs/{id}",
+  "tenant_path": "/{tenant}/tasks/{task_id}/pushNotificationConfigs/{id}",
+  "description": "Deletes a push notification config for a task.",
+  "streaming": false,
+  "request": {
+    "type": "DeleteTaskPushNotificationConfigRequest",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "Represents a request for the `DeleteTaskPushNotificationConfig` method.",
+      "patternProperties": {
+        "^(task_id)$": {
+          "default": "",
+          "description": "The parent task resource ID.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "id": {
+          "default": "",
+          "description": "The resource ID of the configuration to delete.",
+          "type": "string"
+        },
+        "taskId": {
+          "default": "",
+          "description": "The parent task resource ID.",
+          "type": "string"
+        },
+        "tenant": {
+          "default": "",
+          "description": "Optional. Tenant ID, provided as a path parameter.",
+          "type": "string"
+        }
+      },
+      "title": "Delete Task Push Notification Config Request",
+      "type": "object"
+    }
+  },
+  "response": {
+    "type": "google.protobuf.Empty",
+    "schema": null
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "SendStreamingMessage",
+  "description": "Sends a streaming message to an agent, allowing for real-time interaction and status updates. Streaming version of `SendMessage`",
+  "request_type": "SendMessageRequest",
+  "response_type": "StreamResponse",
+  "client_streaming": false,
+  "server_streaming": true
+}

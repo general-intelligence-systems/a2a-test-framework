@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "CancelTask",
+  "description": "Cancels a task in progress.",
+  "request_type": "CancelTaskRequest",
+  "response_type": "Task",
+  "client_streaming": false,
+  "server_streaming": false
+}

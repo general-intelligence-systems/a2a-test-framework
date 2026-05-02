@@ -1,0 +1,104 @@
+{
+  "protocol": "REST (HTTP+JSON)",
+  "http_method": "POST",
+  "path": "/tasks/{task_id}/pushNotificationConfigs",
+  "tenant_path": "/{tenant}/tasks/{task_id}/pushNotificationConfigs",
+  "description": "api-linter: core::0133::method-signature=disabled     api-linter: core::0133::request-message-name=disabled     aip.dev/not-precedent: method_signature preserved for backwards compatibility --) Creates a push notification config for a task.",
+  "streaming": false,
+  "request": {
+    "type": "TaskPushNotificationConfig",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "A container associating a push notification configuration with a specific task.",
+      "patternProperties": {
+        "^(task_id)$": {
+          "default": "",
+          "description": "The ID of the task this configuration is associated with.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "authentication": {
+          "$ref": "lf.a2a.v1.AuthenticationInfo.jsonschema.json",
+          "description": "Authentication information required to send the notification."
+        },
+        "id": {
+          "default": "",
+          "description": "The push notification configuration details.\n A unique identifier (e.g. UUID) for this push notification configuration.",
+          "type": "string"
+        },
+        "taskId": {
+          "default": "",
+          "description": "The ID of the task this configuration is associated with.",
+          "type": "string"
+        },
+        "tenant": {
+          "default": "",
+          "description": "Optional. Tenant ID.",
+          "type": "string"
+        },
+        "token": {
+          "default": "",
+          "description": "A token unique for this task or session.",
+          "type": "string"
+        },
+        "url": {
+          "default": "",
+          "description": "The URL where the notification should be sent.",
+          "type": "string"
+        }
+      },
+      "title": "Task Push Notification Config",
+      "type": "object"
+    }
+  },
+  "response": {
+    "type": "TaskPushNotificationConfig",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "A container associating a push notification configuration with a specific task.",
+      "patternProperties": {
+        "^(task_id)$": {
+          "default": "",
+          "description": "The ID of the task this configuration is associated with.",
+          "type": "string"
+        }
+      },
+      "properties": {
+        "authentication": {
+          "$ref": "lf.a2a.v1.AuthenticationInfo.jsonschema.json",
+          "description": "Authentication information required to send the notification."
+        },
+        "id": {
+          "default": "",
+          "description": "The push notification configuration details.\n A unique identifier (e.g. UUID) for this push notification configuration.",
+          "type": "string"
+        },
+        "taskId": {
+          "default": "",
+          "description": "The ID of the task this configuration is associated with.",
+          "type": "string"
+        },
+        "tenant": {
+          "default": "",
+          "description": "Optional. Tenant ID.",
+          "type": "string"
+        },
+        "token": {
+          "default": "",
+          "description": "A token unique for this task or session.",
+          "type": "string"
+        },
+        "url": {
+          "default": "",
+          "description": "The URL where the notification should be sent.",
+          "type": "string"
+        }
+      },
+      "title": "Task Push Notification Config",
+      "type": "object"
+    }
+  }
+}

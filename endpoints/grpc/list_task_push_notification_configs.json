@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "ListTaskPushNotificationConfigs",
+  "description": "Get a list of push notifications configured for a task.",
+  "request_type": "ListTaskPushNotificationConfigsRequest",
+  "response_type": "ListTaskPushNotificationConfigsResponse",
+  "client_streaming": false,
+  "server_streaming": false
+}

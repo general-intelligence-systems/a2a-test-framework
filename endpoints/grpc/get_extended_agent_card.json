@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "GetExtendedAgentCard",
+  "description": "Gets the extended agent card for the authenticated agent.",
+  "request_type": "GetExtendedAgentCardRequest",
+  "response_type": "AgentCard",
+  "client_streaming": false,
+  "server_streaming": false
+}

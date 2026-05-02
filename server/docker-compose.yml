@@ -1,0 +1,6 @@
+services:
+  agent:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 9292:9292

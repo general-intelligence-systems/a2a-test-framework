@@ -1,0 +1,239 @@
+{
+  "protocol": "REST (HTTP+JSON)",
+  "http_method": "GET",
+  "path": "/tasks",
+  "tenant_path": "/{tenant}/tasks",
+  "description": "Lists tasks that match the specified filter.",
+  "streaming": false,
+  "request": {
+    "type": "ListTasksRequest",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "Parameters for listing tasks with optional filtering criteria.",
+      "patternProperties": {
+        "^(context_id)$": {
+          "default": "",
+          "description": "Filter tasks by context ID to get tasks from a specific conversation or session.",
+          "type": "string"
+        },
+        "^(history_length)$": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "pattern": "^-?[0-9]+$",
+              "type": "string"
+            }
+          ],
+          "description": "The maximum number of messages to include in each task's history."
+        },
+        "^(include_artifacts)$": {
+          "description": "Whether to include artifacts in the returned tasks.\n Defaults to false to reduce payload size.",
+          "type": "boolean"
+        },
+        "^(page_size)$": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "pattern": "^-?[0-9]+$",
+              "type": "string"
+            }
+          ],
+          "description": "The maximum number of tasks to return. The service may return fewer than this value.\n If unspecified, at most 50 tasks will be returned.\n The minimum value is 1.\n The maximum value is 100."
+        },
+        "^(page_token)$": {
+          "default": "",
+          "description": "A page token, received from a previous `ListTasks` call.\n `ListTasksResponse.next_page_token`.\n Provide this to retrieve the subsequent page.",
+          "type": "string"
+        },
+        "^(status_timestamp_after)$": {
+          "$ref": "google.protobuf.Timestamp.jsonschema.json",
+          "description": "Filter tasks which have a status updated after the provided timestamp in ISO 8601 format (e.g., \"2023-10-27T10:00:00Z\").\n Only tasks with a status timestamp time greater than or equal to this value will be returned."
+        }
+      },
+      "properties": {
+        "contextId": {
+          "default": "",
+          "description": "Filter tasks by context ID to get tasks from a specific conversation or session.",
+          "type": "string"
+        },
+        "historyLength": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "pattern": "^-?[0-9]+$",
+              "type": "string"
+            }
+          ],
+          "description": "The maximum number of messages to include in each task's history."
+        },
+        "includeArtifacts": {
+          "description": "Whether to include artifacts in the returned tasks.\n Defaults to false to reduce payload size.",
+          "type": "boolean"
+        },
+        "pageSize": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "pattern": "^-?[0-9]+$",
+              "type": "string"
+            }
+          ],
+          "description": "The maximum number of tasks to return. The service may return fewer than this value.\n If unspecified, at most 50 tasks will be returned.\n The minimum value is 1.\n The maximum value is 100."
+        },
+        "pageToken": {
+          "default": "",
+          "description": "A page token, received from a previous `ListTasks` call.\n `ListTasksResponse.next_page_token`.\n Provide this to retrieve the subsequent page.",
+          "type": "string"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "pattern": "^TASK_STATE_UNSPECIFIED$",
+              "type": "string"
+            },
+            {
+              "enum": [
+                "TASK_STATE_SUBMITTED",
+                "TASK_STATE_WORKING",
+                "TASK_STATE_COMPLETED",
+                "TASK_STATE_FAILED",
+                "TASK_STATE_CANCELED",
+                "TASK_STATE_INPUT_REQUIRED",
+                "TASK_STATE_REJECTED",
+                "TASK_STATE_AUTH_REQUIRED"
+              ],
+              "type": "string"
+            },
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            }
+          ],
+          "default": 0,
+          "description": "Filter tasks by their current status state.",
+          "title": "Task State"
+        },
+        "statusTimestampAfter": {
+          "$ref": "google.protobuf.Timestamp.jsonschema.json",
+          "description": "Filter tasks which have a status updated after the provided timestamp in ISO 8601 format (e.g., \"2023-10-27T10:00:00Z\").\n Only tasks with a status timestamp time greater than or equal to this value will be returned."
+        },
+        "tenant": {
+          "default": "",
+          "description": "Tenant ID, provided as a path parameter.",
+          "type": "string"
+        }
+      },
+      "title": "List Tasks Request",
+      "type": "object"
+    }
+  },
+  "response": {
+    "type": "ListTasksResponse",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "Result object for `ListTasks` method containing an array of tasks and pagination information.",
+      "patternProperties": {
+        "^(next_page_token)$": {
+          "default": "",
+          "description": "A token to retrieve the next page of results, or empty if there are no more results in the list.",
+          "type": "string"
+        },
+        "^(page_size)$": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "pattern": "^-?[0-9]+$",
+              "type": "string"
+            }
+          ],
+          "default": 0,
+          "description": "The page size used for this response."
+        },
+        "^(total_size)$": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "pattern": "^-?[0-9]+$",
+              "type": "string"
+            }
+          ],
+          "default": 0,
+          "description": "Total number of tasks available (before pagination)."
+        }
+      },
+      "properties": {
+        "nextPageToken": {
+          "default": "",
+          "description": "A token to retrieve the next page of results, or empty if there are no more results in the list.",
+          "type": "string"
+        },
+        "pageSize": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "pattern": "^-?[0-9]+$",
+              "type": "string"
+            }
+          ],
+          "default": 0,
+          "description": "The page size used for this response."
+        },
+        "tasks": {
+          "description": "Array of tasks matching the specified criteria.",
+          "items": {
+            "$ref": "lf.a2a.v1.Task.jsonschema.json"
+          },
+          "type": "array"
+        },
+        "totalSize": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "pattern": "^-?[0-9]+$",
+              "type": "string"
+            }
+          ],
+          "default": 0,
+          "description": "Total number of tasks available (before pagination)."
+        }
+      },
+      "title": "List Tasks Response",
+      "type": "object"
+    }
+  }
+}

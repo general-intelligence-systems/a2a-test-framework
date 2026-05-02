@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "DeleteTaskPushNotificationConfig",
+  "description": "Deletes a push notification config for a task.",
+  "request_type": "DeleteTaskPushNotificationConfigRequest",
+  "response_type": "google.protobuf.Empty",
+  "client_streaming": false,
+  "server_streaming": false
+}

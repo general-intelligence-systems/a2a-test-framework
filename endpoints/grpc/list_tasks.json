@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "ListTasks",
+  "description": "Lists tasks that match the specified filter.",
+  "request_type": "ListTasksRequest",
+  "response_type": "ListTasksResponse",
+  "client_streaming": false,
+  "server_streaming": false
+}

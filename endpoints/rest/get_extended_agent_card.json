@@ -1,0 +1,168 @@
+{
+  "protocol": "REST (HTTP+JSON)",
+  "http_method": "GET",
+  "path": "/extendedAgentCard",
+  "tenant_path": "/{tenant}/extendedAgentCard",
+  "description": "Gets the extended agent card for the authenticated agent.",
+  "streaming": false,
+  "request": {
+    "type": "GetExtendedAgentCardRequest",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "Represents a request for the `GetExtendedAgentCard` method.",
+      "properties": {
+        "tenant": {
+          "default": "",
+          "description": "Optional. Tenant ID, provided as a path parameter.",
+          "type": "string"
+        }
+      },
+      "title": "Get Extended Agent Card Request",
+      "type": "object"
+    }
+  },
+  "response": {
+    "type": "AgentCard",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "A self-describing manifest for an agent. It provides essential\n metadata including the agent's identity, capabilities, skills, supported\n communication methods, and security requirements.\n Next ID: 20",
+      "patternProperties": {
+        "^(default_input_modes)$": {
+          "description": "The set of interaction modes that the agent supports across all skills.\n This can be overridden per skill. Defined as media types.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "^(default_output_modes)$": {
+          "description": "The media types supported as outputs from this agent.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "^(documentation_url)$": {
+          "description": "A URL providing additional documentation about the agent.",
+          "type": "string"
+        },
+        "^(icon_url)$": {
+          "description": "Optional. A URL to an icon for the agent.",
+          "type": "string"
+        },
+        "^(security_requirements)$": {
+          "description": "Security requirements for contacting the agent.",
+          "items": {
+            "$ref": "lf.a2a.v1.SecurityRequirement.jsonschema.json"
+          },
+          "type": "array"
+        },
+        "^(security_schemes)$": {
+          "additionalProperties": {
+            "$ref": "lf.a2a.v1.SecurityScheme.jsonschema.json"
+          },
+          "description": "The security scheme details used for authenticating with this agent.",
+          "propertyNames": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "^(supported_interfaces)$": {
+          "description": "Ordered list of supported interfaces. The first entry is preferred.",
+          "items": {
+            "$ref": "lf.a2a.v1.AgentInterface.jsonschema.json"
+          },
+          "type": "array"
+        }
+      },
+      "properties": {
+        "capabilities": {
+          "$ref": "lf.a2a.v1.AgentCapabilities.jsonschema.json",
+          "description": "A2A Capability set supported by the agent."
+        },
+        "defaultInputModes": {
+          "description": "The set of interaction modes that the agent supports across all skills.\n This can be overridden per skill. Defined as media types.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "defaultOutputModes": {
+          "description": "The media types supported as outputs from this agent.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "description": {
+          "default": "",
+          "description": "A human-readable description of the agent, assisting users and other agents\n in understanding its purpose.\n Example: \"Agent that helps users with recipes and cooking.\"",
+          "type": "string"
+        },
+        "documentationUrl": {
+          "description": "A URL providing additional documentation about the agent.",
+          "type": "string"
+        },
+        "iconUrl": {
+          "description": "Optional. A URL to an icon for the agent.",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "description": "A human readable name for the agent.\n Example: \"Recipe Agent\"",
+          "type": "string"
+        },
+        "provider": {
+          "$ref": "lf.a2a.v1.AgentProvider.jsonschema.json",
+          "description": "The service provider of the agent."
+        },
+        "securityRequirements": {
+          "description": "Security requirements for contacting the agent.",
+          "items": {
+            "$ref": "lf.a2a.v1.SecurityRequirement.jsonschema.json"
+          },
+          "type": "array"
+        },
+        "securitySchemes": {
+          "additionalProperties": {
+            "$ref": "lf.a2a.v1.SecurityScheme.jsonschema.json"
+          },
+          "description": "The security scheme details used for authenticating with this agent.",
+          "propertyNames": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "signatures": {
+          "description": "JSON Web Signatures computed for this `AgentCard`.",
+          "items": {
+            "$ref": "lf.a2a.v1.AgentCardSignature.jsonschema.json"
+          },
+          "type": "array"
+        },
+        "skills": {
+          "description": "Skills represent the abilities of an agent.\n It is largely a descriptive concept but represents a more focused set of behaviors that the\n agent is likely to succeed at.",
+          "items": {
+            "$ref": "lf.a2a.v1.AgentSkill.jsonschema.json"
+          },
+          "type": "array"
+        },
+        "supportedInterfaces": {
+          "description": "Ordered list of supported interfaces. The first entry is preferred.",
+          "items": {
+            "$ref": "lf.a2a.v1.AgentInterface.jsonschema.json"
+          },
+          "type": "array"
+        },
+        "version": {
+          "default": "",
+          "description": "The version of the agent.\n Example: \"1.0.0\"",
+          "type": "string"
+        }
+      },
+      "title": "Agent Card",
+      "type": "object"
+    }
+  }
+}

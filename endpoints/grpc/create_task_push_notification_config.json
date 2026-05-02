@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "CreateTaskPushNotificationConfig",
+  "description": "api-linter: core::0133::method-signature=disabled     api-linter: core::0133::request-message-name=disabled     aip.dev/not-precedent: method_signature preserved for backwards compatibility --) Creates a push notification config for a task.",
+  "request_type": "TaskPushNotificationConfig",
+  "response_type": "TaskPushNotificationConfig",
+  "client_streaming": false,
+  "server_streaming": false
+}

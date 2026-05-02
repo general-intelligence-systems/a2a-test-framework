@@ -1,0 +1,68 @@
+{
+  "protocol": "REST (HTTP+JSON)",
+  "http_method": "GET",
+  "path": "/tasks/{id}:subscribe",
+  "tenant_path": "/{tenant}/tasks/{id}:subscribe",
+  "description": "Subscribes to task updates for tasks not in a terminal state. Returns `UnsupportedOperationError` if the task is already in a terminal state (completed, failed, canceled, rejected).",
+  "streaming": true,
+  "request": {
+    "type": "SubscribeToTaskRequest",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "Represents a request for the `SubscribeToTask` method.",
+      "properties": {
+        "id": {
+          "default": "",
+          "description": "The resource ID of the task to subscribe to.",
+          "type": "string"
+        },
+        "tenant": {
+          "default": "",
+          "description": "Optional. Tenant ID, provided as a path parameter.",
+          "type": "string"
+        }
+      },
+      "title": "Subscribe To Task Request",
+      "type": "object"
+    }
+  },
+  "response": {
+    "type": "StreamResponse",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "A wrapper object used in streaming operations to encapsulate different types of response data.",
+      "patternProperties": {
+        "^(artifact_update)$": {
+          "$ref": "lf.a2a.v1.TaskArtifactUpdateEvent.jsonschema.json",
+          "description": "An event indicating a task artifact update."
+        },
+        "^(status_update)$": {
+          "$ref": "lf.a2a.v1.TaskStatusUpdateEvent.jsonschema.json",
+          "description": "An event indicating a task status update."
+        }
+      },
+      "properties": {
+        "artifactUpdate": {
+          "$ref": "lf.a2a.v1.TaskArtifactUpdateEvent.jsonschema.json",
+          "description": "An event indicating a task artifact update."
+        },
+        "message": {
+          "$ref": "lf.a2a.v1.Message.jsonschema.json",
+          "description": "A Message object containing a message from the agent."
+        },
+        "statusUpdate": {
+          "$ref": "lf.a2a.v1.TaskStatusUpdateEvent.jsonschema.json",
+          "description": "An event indicating a task status update."
+        },
+        "task": {
+          "$ref": "lf.a2a.v1.Task.jsonschema.json",
+          "description": "A Task object containing the current state of the task."
+        }
+      },
+      "title": "Stream Response",
+      "type": "object"
+    }
+  }
+}

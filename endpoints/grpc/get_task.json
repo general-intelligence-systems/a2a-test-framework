@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "GetTask",
+  "description": "Gets the latest state of a task.",
+  "request_type": "GetTaskRequest",
+  "response_type": "Task",
+  "client_streaming": false,
+  "server_streaming": false
+}

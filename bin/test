@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BASE_URL="${A2A_BASE_URL:-http://localhost:9292}"
+
+# Start server if not already running
+if ! curl -sf "${BASE_URL}/.well-known/agent-card.json" >/dev/null 2>&1; then
+  echo "Starting A2A reference server..."
+  docker compose up -d --build --wait
+fi
+
+export A2A_BASE_URL="$BASE_URL"
+
+# Delegate to the gem's CLI
+exec bundle exec exe/a2a-test "$@"

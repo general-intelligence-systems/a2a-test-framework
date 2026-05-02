@@ -1,0 +1,12 @@
+services:
+  a2a-server:
+    build: ./server
+    restart: unless-stopped
+    ports:
+      - "9292:9292"
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:9292/.well-known/agent-card.json"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+      start_period: 10s

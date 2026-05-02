@@ -1,0 +1,10 @@
+{
+  "protocol": "gRPC",
+  "service": "A2AService",
+  "method": "SendMessage",
+  "description": "Sends a message to an agent.",
+  "request_type": "SendMessageRequest",
+  "response_type": "SendMessageResponse",
+  "client_streaming": false,
+  "server_streaming": false
+}
